@@ -7,6 +7,7 @@
   var oneTimeWordNum = 4;
 
   var sys    = arbor.ParticleSystem();
+  var ggfx   = null;
   var socket = io();
 
   var wordlists = {};
@@ -28,8 +29,8 @@
   socket.on('first search result', function (data) {
     $('.first.page').fadeOut();
     $('#main').height = '100%';
-    sys.parameters({stiffness:900, repulsion:2000, gravity:true, dt:0.015})
-    sys.renderer = Renderer("#main")
+    sys.parameters({stiffness:900, repulsion:2000, gravity:true, dt:0.015});
+    sys.renderer = Renderer("#main");
     var rootNode = sys.addNode(data.word, {
       color: COLOR.root,
       shape: "square",
@@ -84,6 +85,7 @@
   }
 
   function isClickableNode(nearest, _mouseP) {
+//    var byteLength = Math.max(16, 16+ggfx.textWidth(nearest.node.name) );
     var byteLength = bytes2(nearest.node.name) * byteLengthRate;
     var toPoint    = sys.toScreen(nearest.node._p);
     var xDistance  = Math.abs(_mouseP.x - toPoint.x);
@@ -100,6 +102,7 @@
 
     var that = {
       init:function(pSystem) {
+        ggfx = gfx;
         sys = pSystem
         sys.screen({
           size:{
@@ -115,7 +118,7 @@
       },
       resize:function() {
         canvas.width  = $(window).width();
-        canvas.height = .9 * $(window).height();
+        canvas.height = $(window).height();//.9 * $(window).height();
         sys.screen({
           size:{
             width:canvas.width,
