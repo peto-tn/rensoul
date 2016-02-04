@@ -5,7 +5,7 @@ var http = require('http');
 var server = http.createServer(app);
 var xmlrpc = require('xmlrpc');
 var io = require('socket.io')(server);
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 
 var logger = require('log4js').getLogger();
 
@@ -44,10 +44,14 @@ io.on('connection', function (socket) {
           });
           return;
       }
-      socket.emit('first search result', {
-        result: value,
-        word: data
-      });
+      if(value.wordlist.length == 0) {
+        socket.emit('first search error', {});
+      } else {
+        socket.emit('first search result', {
+          result: value,
+          word: data
+        });
+      }
     });
   });
 

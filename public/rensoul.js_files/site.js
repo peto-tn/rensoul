@@ -15,8 +15,17 @@
 
   var byteLengthRate = 4;
 
+  socket.on('first search error', function (data) {
+    $('#Search-Word')[0].setCustomValidity("連想語が見つかりませんでした"); 
+    $('.w-button').click();
+  });
+
   // first seach
   socket.on('first search result', function (data) {
+    $('.first.page').fadeOut();
+    $('#main').height = '100%';
+    sys.parameters({stiffness:900, repulsion:2000, gravity:true, dt:0.015})
+    sys.renderer = Renderer("#main")
     var rootNode = sys.addNode(data.word, {
       color: COLOR.root,
       shape: "square",
@@ -168,17 +177,13 @@
   }
   
   $(document).ready(function(){
-    sys.parameters({stiffness:900, repulsion:2000, gravity:true, dt:0.015})
-    sys.renderer = Renderer("#main")
+    
   })
 
-  $(window).keydown(function (event) {
-    if (event.which === 13) {
-        word = $('.wordInput').val();
-        $('.first.page').fadeOut();
-        socket.emit('first search', word);
-      }
-    }
-  );
+  $('#Search-Word-Input').submit(function(){
+    word = $('#Search-Word').val();
+    socket.emit('first search', word);
+    return false;
+  });
 
 })(this.jQuery);

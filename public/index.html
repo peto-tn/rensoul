@@ -1,25 +1,90 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="jp" class="wf-athelas1athelas2-n4-active wf-athelas1athelas2-i4-active wf-athelas1athelas2-n7-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-  <title>rensoul</title>
-	<script type="text/javascript" src="./rensoul.js_files/mxh7kqd.js"></script>
-	<link rel="stylesheet" href="./rensoul.js_files/site.css" type="text/css" charset="utf-8">
-        <link rel="stylesheet" href="search_style.css" type="text/css">
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta charset="utf-8">
+  <title>連想魂(rensoul)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="rensoul">
+  <link rel="stylesheet" href="./rensoul.js_files/site.css" type="text/css" charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <script src="webfont.js"></script>
+  <script>
+  WebFont.load({
+    google: {
+      families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Petit Formal Script:regular"]
+    }
+  });
+  </script>
+  
+  <link rel="shortcut icon" type="image/x-icon" href="image/favicon.png">
 </head>
 <body>
-  <div id="graph">
-    <canvas id="main" width="100%" height="100%" class="linkable" style="opacity: 1;"></canvas>
+  
+  <div class="first page"><div class="form">
+  <div class="w-section w-clearfix bars-wrapper">
+    <div class="bar"></div>
+    <div class="bar _2"></div>
+    <div class="bar _3"></div>
+    <div class="bar _4"></div>
+    <div class="bar _5"></div>
+    <div class="bar _6"></div>
+    <div class="bar"></div>
   </div>
-  <li class="first page">
-    <div class="form">
-      <h3 class="title">What's search word?</h3>
-      <input class="wordInput" type="text" maxlength="14" />
+  <div class="w-section header-section">
+    <div class="w-container container">
+      <h1>連想魂</h1>
+      <p class="subtitle">連想魂(rensoul)は、連想ワードがひたすら繋がっていくサービスです</p>
+      <div class="w-form sign-up-form">
+        <form id="Search-Word-Input" name="wf-form-signup-form" data-name="Signup Form" class="w-clearfix">
+          <input id="Search-Word" type="" placeholder="What's Search Word" name="Search-Word" data-name="Search Word" required="required" class="w-input field" oninput="this.setCustomValidity('')">
+          <input type="submit" value="Start" data-wait="Please wait..." class="w-button button">
+        </form>
+      </div>
+      <div class="image-crop">
+        <img src="image/tendon.png">
+      </div>
     </div>
-  </li>
-  <div id="footer">
-    Created by @peto_tn
   </div>
-
+  <div class="w-section social-section">
+    <div class="w-container">
+      <h2>
+      Spread the word about Rensoul!</h2>
+      <div class="share-wrapper">
+        <div class="w-widget w-widget-twitter share-btn">
+          <div class="w-widget-twitter-count-shim w--vertical">
+            <div class="w-widget-twitter-count-inner">
+              ...
+            </div>
+          </div>
+          <div class="w-widget-twitter-count-clear"></div>
+          <a href="https://twitter.com/share" class="twitter-share-button" data-via="peto_tn" data-lang="ja">ツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="w-section footer-section">
+    <div class="w-container">
+      <div class="w-row">
+        <div class="w-col w-col-6 w-col-small-6">
+            <div class="copyright">
+              created by @peto_tn 
+              <a href="http://twitter.com/peto_tn" class="w-inline-block social-btn">
+                <img src="image/twitter-icon.svg">
+              </a>
+             ,&nbsp;&nbsp;&nbsp;powerd by はてなキーワード連想語API
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <div id="graph">
+    <canvas id="main" width="100%" height="0" class="linkable" style="opacity: 1;"></canvas>
+  </div>
+  
   <script src="./rensoul.js_files/jquery-1.6.1.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
 
@@ -28,5 +93,6 @@
   <script src="./rensoul.js_files/arbor-graphics.js"></script>
 
   <script src="./rensoul.js_files/site.js"></script>
-
-</body></html>
+  
+</body>
+</html>
