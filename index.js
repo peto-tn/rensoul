@@ -5,7 +5,7 @@ var http = require('http');
 var server = http.createServer(app);
 var xmlrpc = require('xmlrpc');
 var io = require('socket.io')(server);
-var port = process.env.PORT || 3001;
+var port = process.env.PORT || 3000;
 
 var logger = require('log4js').getLogger();
 
