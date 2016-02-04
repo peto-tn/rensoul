@@ -15,12 +15,16 @@
 
   var byteLengthRate = 4;
 
+  var searchWordButtonVal = '';
+
+  // first search error
   socket.on('first search error', function (data) {
+    $('#Search-Word-Submit').val(searchWordButtonVal);
     $('#Search-Word')[0].setCustomValidity("連想語が見つかりませんでした"); 
     $('.w-button').click();
   });
 
-  // first seach
+  // first search
   socket.on('first search result', function (data) {
     $('.first.page').fadeOut();
     $('#main').height = '100%';
@@ -181,6 +185,9 @@
   })
 
   $('#Search-Word-Input').submit(function(){
+    var submitButton = $('#Search-Word-Submit');
+    searchWordButtonVal = submitButton.val();
+    submitButton.val(submitButton.attr('data-wait'));
     word = $('#Search-Word').val();
     socket.emit('first search', word);
     return false;
